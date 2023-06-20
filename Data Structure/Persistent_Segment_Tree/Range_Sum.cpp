@@ -1,8 +1,9 @@
-#define MAXN 200005
-int Root[MAXN], L_child[MAXN << 4], R_child[MAXN << 4], sum[MAXN << 4], node;
+#define MAXN 1000005
+int Root[MAXN], L_child[10000005], R_child[10000005], sum[10000005], node;
 
 int built(int l, int r) {
     int curNode = node++;
+    sum[curNode]=0;
     if (l == r) return curNode;
     int mid = (l + r) / 2;
     L_child[curNode] = built(l, mid);
@@ -38,9 +39,9 @@ int query(int curNode, int l, int r, int lb, int rb) {
 
 /*
 Usage:
-    Root[0]=built(l, r);     //empty tree
-    Root[index]=insert(root_of_based_on_which_tree, l, r, target, value);    //insert value at target
-    query(root_of_tree, l, r, queryL, queryR);     //query sum of range [queryL, queryR]
+    Root[0]=built(1, n);     //empty tree
+    Root[index]=insert(root_of_based_on_which_tree, 1, n, target, value);    //insert value at target
+    query(root_of_tree, 1, n, queryL, queryR);     //query sum of range [queryL, queryR]
     
 Things need to do:
     define MAXN
