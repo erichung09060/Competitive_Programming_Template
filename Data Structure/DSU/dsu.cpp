@@ -1,9 +1,9 @@
-typedef struct DisjoinSetUnion {
+struct DSU {
     // vector<set<int>> elements;
     vector<int> dsu, dsusz;
     int group;
 
-    DisjoinSetUnion(int n) {
+    DSU(int n) {
         // elements.resize(n+1);
         dsu.resize(n + 1);
         dsusz.resize(n + 1);
@@ -42,7 +42,7 @@ typedef struct DisjoinSetUnion {
         // elements[b].clear();
         return true;
     }
-} DSU;
+};
 
 /*
 Usage:
