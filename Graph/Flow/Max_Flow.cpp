@@ -4,7 +4,7 @@ int rest[MAXN][MAXN], from[MAXN], mi[MAXN], n, m;
 
 bool bfs(int s, int e) {
     queue<int> q;
-    memset(from, 0, sizeof(from));
+    memset(from, -1, sizeof(from));
 
     q.push(s);
     from[s] = s;
@@ -15,7 +15,7 @@ bool bfs(int s, int e) {
         q.pop();
 
         for (int i = 1; i <= n; i++) {
-            if (!from[i] && rest[now][i]) {
+            if (from[i] == -1 && rest[now][i]) {
                 from[i] = now;
                 mi[i] = min(mi[now], rest[now][i]);
 
@@ -34,7 +34,7 @@ int max_flow(int s, int e) {
         sum_flow += increase_flow;
 
         int now = e;
-        while (now != 1) {
+        while (now != s) {
             rest[from[now]][now] -= increase_flow;
             rest[now][from[now]] += increase_flow;
             now = from[now];
