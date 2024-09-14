@@ -1,6 +1,7 @@
 const int mod = 1e9 + 7;
 
 int fpow(long long a, int b) {
+    a %= mod;
     long long ans = 1;
     while (b) {
         if (b & 1) ans = (ans * a) % mod;
